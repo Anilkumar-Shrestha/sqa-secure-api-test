@@ -78,4 +78,25 @@ For above quest to achieve, I followed below steps:
 3. Create a github actions to execute the above test on code push or Pull Request.
    For this I have set up [ci.yml](.github/workflows/ci.yml) file, where test will be executed automatically on git push and pull request. You can update it to execute on pull request by updating
    line 3, from `on: [push, pull_request]` to `on: [ pull_request]`.
+   GithubActions CI would look like below on PASSED.
+   ![githubActions_on_pass1.png](src/main/resources/screenshots/githubActions_on_pass1.png)
 
+4. Create a `test_hacker_branch` and change api access token value in ENV file and create a PR.
+   ![pr_test_hacker_branch.png](src/main/resources/screenshots/pr_test_hacker_branch.png)
+
+5. Once you create, github actions will run the CI tests automatically and results will be failed as `test_hacker_branch` has changes made by hacker to the Application by updating the app access token value.
+   Results would be shown in github actions as below [ Note: Since we have configured CI to be execute on push and PR, you will see test executed twice ]:
+   ![github_actions_on_pr_hacker2.png](src/main/resources/screenshots/github_actions_on_pr_hacker2.png)
+
+6. If you drill down to failed reason , you will see 401 status as below.
+   ![build_failed_details_hacker_pr.png](src/main/resources/screenshots/build_failed_details_hacker_pr.png)
+
+7.  To enforce the rule for status check to pass, please update the setting rule to check
+1. [X] Require status checks to pass
+   <br> This will protect from hacker creating a PR and merging the PR to code with the test been failed in CI pipeline.
+   ![status_check_require_Pr_to_merge.png](src/main/resources/screenshots/status_check_require_Pr_to_merge.png)
+
+
+
+### Task completed successfully. All steps implemented and tested. Ready for review. Feedback and suggestions are welcome.
+   
