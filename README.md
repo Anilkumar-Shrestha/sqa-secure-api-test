@@ -76,5 +76,6 @@ For above quest to achieve, I followed below steps:
    ![test_html_report1.png](src/main/resources/screenshots/test_html_report1.png)
 
 3. Create a github actions to execute the above test on code push or Pull Request.
-   
+   For this I have set up [ci.yml](.github/workflows/ci.yml) file, where test will be executed automatically on git push and pull request. You can update it to execute on pull request by updating
+   line 3, from `on: [push, pull_request]` to `on: [ pull_request]`.
 
